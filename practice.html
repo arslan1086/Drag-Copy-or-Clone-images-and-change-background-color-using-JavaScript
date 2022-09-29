@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="ImageColor.css">
+    <title>Image Color Change!</title>
+</head>
+
+<body onload="move('drop_all_img')">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <div class="drag-zone" ondragover=" allowDrop(event)" ondrop="dropcopy(event)" >
+                    <img src="Images/shirt.png" height="130px" onclick="bgChange(event)" id="images"
+                        ondragstart="DragStart(event) ">
+                    <img src="Images/3.jpeg" height="130px" onclick="bgChange(event)" id="drag-element1"
+                        ondragstart="DragStart(event) ">
+                    <img src="Images/shirt.png" height="130px" onclick="bgChange(event)" id="drag-element2"
+                        ondragstart="DragStart(event) ">
+                    <img src="Images/shirt.png" height="130px" onclick="bgChange(event)" id="drag-element3"
+                        ondragstart="DragStart(event) ">
+                    <img src="Images/shirt.png" height="130px" onclick="bgChange(event)" id="drag-element4"
+                        ondragstart="DragStart(event) ">
+                    <img src="Images/shirt.png" height="130px" onclick="bgChange(event)" id="drag-element5"
+                        ondragstart="DragStart(event) ">
+                    <img src="Images/shirt.png" height="130px" onclick="bgChange(event)" id="drag-element6"
+                        ondragstart="DragStart(event) ">
+                    <img src="Images/shirt.png" height="130px" onclick="bgChange(event)" id="drag-element7"
+                        ondragstart="DragStart(event) ">
+                    <img src="Images/shirt.png" height="130px" onclick="bgChange(event)" id="drag-element8"
+                        ondragstart="DragStart(event) ">
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="drop-zone" id="drop_all_img" onload="move('drop_all_img')">
+                    <div class="mb-3">
+                        <input class="form-control form-control-sm" id="textarea" placeholder="Enter Your Name"
+                            rows="3"></textarea>
+                    </div>
+                    <input type="color" id="testing" class="color-input" value="#ffe4c4" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+
+            </div>
+            <div class="col-8">
+                <button type="button" id="btnSave" class="btn btn-success"> Click to Save the File</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+
+
+        var myId;
+        var x = document.getElementById(myId);
+
+        function openColorBar() {
+            document.getElementById("testing").click()
+        }
+
+        function bgChange(event) {
+            openColorBar();
+            // console.log(event.target.id)
+            var bg_color = document.getElementsByClassName('color-input')[0].value;
+            // console.log(bg_color)
+            const img_bg_color = document.getElementById(event.target.id);
+            // console.log(img_bg_color)
+            img_bg_color.style.backgroundColor = bg_color;
+        }
+
+        // To Drag and Drop the Images:
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function DragStart(ev) {
+            var element = document.getElementById('drop_all_img');
+            var lastChild = element.lastElementChild;
+            const div = document.getElementById(ev.target.id)
+            const clone = div.cloneNode(true);
+            if (lastChild.id == 'testing') {
+                clone.id = '1';
+            }
+            else {
+                clone.id = parseInt(lastChild.id) + 1;
+            }
+            document.getElementById('drop_all_img').appendChild(clone);
+        }
+
+
+
+
+        function drop(eve) {
+            eve.preventDefault();
+            // ev.target.append(document.getElementById(myId))
+            // var data = ev.dataTransfer.getData("Text");
+            // ev.target.appendChild(document.getElementById('drop_all_img'));
+        }
+    </script>
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>
